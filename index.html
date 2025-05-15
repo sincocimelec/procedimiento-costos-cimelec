@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guía Interactiva: Procedimiento de Presupuestos y Costos en SINCO - Cimelec Ingenieros</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Favicon (opcional, pero profesional) - crea un pequeño icono para la pestaña del navegador -->
     <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
 </head>
 <body>
@@ -52,7 +51,20 @@
         <section id="detalles-etapa-container" class="content-section hidden-section">
             <button id="btn-volver-al-flujo" class="nav-button back-button"><< Volver al Flujo Principal</button>
             <h2 id="titulo-etapa-seleccionada" class="section-title"></h2>
-            <p id="descripcion-etapa-seleccionada" class="instructions"></p>
+            
+            <div id="info-general-etapa" class="stage-overview">
+                <h3><span class="icon">ℹ️</span> Visión General de la Etapa:</h3>
+                <p id="descripcion-general-etapa-texto"></p>
+                
+                <h4><span class="icon">➡️</span> Entradas Clave para esta Etapa:</h4>
+                <ul id="entradas-principales-etapa-lista" class="detail-list"></ul>
+                
+                <h4><span class="icon">⬅️</span> Salidas / Resultados Globales de esta Etapa:</h4>
+                <ul id="salidas-principales-etapa-lista" class="detail-list"></ul>
+            </div>
+
+            <h3 class="subsection-title" id="subprocesos-list-title"><span class="icon">📋</span> Actividades / Subprocesos Detallados:</h3>
+            <p id="descripcion-etapa-seleccionada" class="instructions">Seleccione una actividad de la lista para ver sus pasos, entradas y salidas específicas.</p>
 
             <div id="lista-subprocesos-etapa" class="subprocesses-list">
                 <!-- Los botones de subprocesos se cargarán aquí dinámicamente -->
@@ -63,7 +75,7 @@
                 <h3 id="titulo-subproceso-seleccionado" class="subsection-title"></h3>
                 
                 <div class="detail-section">
-                    <h4><span class="icon">📥</span> Entradas Requeridas:</h4>
+                    <h4><span class="icon">📥</span> Entradas Específicas para esta Actividad:</h4>
                     <ul id="subproceso-entradas-lista" class="detail-list"></ul>
                 </div>
 
@@ -73,16 +85,16 @@
                 </div>
 
                 <div class="detail-section">
-                    <h4><span class="icon">👥</span> Intervinientes / Responsables Principales:</h4>
+                    <h4><span class="icon">👥</span> Intervinientes / Responsables Principales de la Actividad:</h4>
                     <p id="subproceso-intervinientes-texto" class="detail-text"></p>
                 </div>
 
                 <div class="detail-section">
-                    <h4><span class="icon">📤</span> Salidas / Resultados Esperados:</h4>
+                    <h4><span class="icon">📤</span> Salidas / Resultados Esperados de la Actividad:</h4>
                     <p id="subproceso-salidas-texto" class="detail-text"></p>
                 </div>
                  <div class="detail-section" id="subproceso-tips-container" style="display:none;">
-                    <h4><span class="icon">💡</span> Puntos Clave / Consejos:</h4>
+                    <h4><span class="icon">💡</span> Puntos Clave / Consejos para esta Actividad:</h4>
                     <ul id="subproceso-tips-lista" class="detail-list tips"></ul>
                 </div>
             </article>
@@ -96,30 +108,20 @@
                 <dt>SINCO ERP:</dt><dd>Producto de software (Enterprise Resource Planning) utilizado por Cimelec Ingenieros en la industria de la construcción para gestionar proyectos, recursos, finanzas y operaciones. (Ref. Documento Sección 4)</dd>
                 <dt>APU (Análisis de Precios Unitarios):</dt><dd>Desglose detallado de los componentes (materiales, mano de obra, equipo, indirectos) que conforman el costo de una unidad de una actividad constructiva.</dd>
                 <dt>EDT (Estructura de Desglose de Trabajo):</dt><dd>Descomposición jerárquica del alcance total del trabajo a realizar por el equipo del proyecto para cumplir con los objetivos del proyecto y crear los entregables requeridos. También conocido como WBS (Work Breakdown Structure).</dd>
-                <!-- Añadir más términos del documento, referenciando la sección si es posible -->
+                <dt>AIU (Administración, Imprevistos y Utilidad):</dt><dd>Porcentaje que se aplica sobre los costos directos de un proyecto para cubrir gastos administrativos, contingencias y la ganancia esperada.</dd>
+                 <!-- Añadir más términos del documento, referenciando la sección si es posible -->
             </dl>
         </section>
 
         <section id="responsables-container" class="content-section info-content hidden-section">
-            <h2 class="section-title">Roles y Responsabilidades</h2>
-            <div class="responsibility">
-                <h3>Gerencia (Ref. Sección 5.1)</h3>
-                <ul>
-                    <li>Define la estrategia financiera y los objetivos del proyecto.</li>
-                    <li>Aprueba los presupuestos y toma decisiones sobre la asignación de recursos.</li>
-                    <li>Supervisa la ejecución presupuestaria y establece medidas correctivas ante desviaciones significativas.</li>
-                </ul>
-            </div>
-            <div class="responsibility">
-                <h3>Dirección de Presupuestos y Costos (Ref. Sección 5.2)</h3>
-                <ul>
-                    <li>Lidera la elaboración, control y seguimiento del presupuesto de la empresa y sus proyectos.</li>
-                    <li>Analiza la información financiera y reporta desviaciones a la alta gerencia.</li>
-                    <li>Implementa estrategias para optimizar costos y mejorar la rentabilidad de los proyectos.</li>
-                    <li>Asegura el correcto uso del software SINCO ERP para la gestión presupuestaria.</li>
-                </ul>
-            </div>
-             <!-- Añadir más roles y responsabilidades del documento (Sección 5) -->
+            <h2 class="section-title">Roles y Responsabilidades (Ref. Sección 5)</h2>
+            <div class="responsibility"> <h3>Gerencia (5.1)</h3> <ul> <li>Define la estrategia financiera y los objetivos del proyecto.</li> <li>Aprueba los presupuestos y toma decisiones sobre la asignación de recursos.</li> <li>Supervisa la ejecución presupuestaria y establece medidas correctivas ante desviaciones significativas.</li> </ul> </div>
+            <div class="responsibility"> <h3>Dirección de Presupuestos y Costos (5.2)</h3> <ul> <li>Lidera la elaboración, control y seguimiento del presupuesto de la empresa y sus proyectos.</li> <li>Analiza la información financiera y reporta desviaciones a la alta gerencia.</li> <li>Implementa estrategias para optimizar costos y mejorar la rentabilidad de los proyectos.</li> <li>Asegura el correcto uso del software SINCO ERP para la gestión presupuestaria.</li> </ul> </div>
+            <div class="responsibility"> <h3>Equipo de Proyecto (Director, Ing. Presupuesto, Almacenista, Auxiliares) (5.3)</h3> <ul> <li>Ejecuta las actividades del proyecto dentro de los parámetros presupuestarios.</li> <li>Monitorea la ejecución de costos y reporta variaciones.</li> <li>Realiza ajustes en planificación según cambios y coordina con presupuestos.</li> <li>Controla el consumo de insumos y equipos, evitando sobrecostos.</li> </ul> </div>
+            <div class="responsibility"> <h3>Área de Compras (5.4)</h3> <ul> <li>Planifica y gestiona la adquisición de insumos, equipos y servicios.</li> <li>Coordina cotizaciones con proveedores para asegurar precios competitivos.</li> <li>Garantiza cumplimiento de tiempos de entrega y disponibilidad de recursos.</li> </ul> </div>
+            <div class="responsibility"> <h3>Área de Recursos Humanos y Contratos (5.5)</h3> <ul> <li>Registra, gestiona y liquida personal de nómina y por prestación de servicios.</li> <li>Gestiona contratación de mano de obra, alquiler de inmuebles y servicios asociados.</li> </ul> </div>
+            <div class="responsibility"> <h3>Área Contable y Financiera (5.6)</h3> <ul> <li>Registra y gestiona la información financiera de la ejecución presupuestaria.</li> <li>Controla costos administrativos y realiza conciliaciones con presupuesto.</li> <li>Supervisa pagos y desembolsos.</li> </ul> </div>
+            <div class="responsibility"> <h3>Área de Licitaciones (5.7)</h3> <ul> <li>Coordina la estructuración de propuestas económicas y financieras.</li> <li>Trabaja con presupuestos para garantizar viabilidad de ofertas.</li> <li>Evalúa costos y márgenes de utilidad en procesos de contratación.</li> </ul> </div>
         </section>
 
         <section id="anexos-container" class="content-section info-content hidden-section">
@@ -142,18 +144,18 @@
     <script>
         mermaid.initialize({
             startOnLoad: true,
-            theme: 'base', // 'default', 'forest', 'dark', 'neutral'
+            theme: 'base', 
             themeVariables: {
-                primaryColor: '#e6f3ff', // Color de fondo de los nodos
-                primaryTextColor: '#212529', // Color del texto en nodos
-                primaryBorderColor: '#004080', // Color del borde de nodos
-                lineColor: '#555', // Color de las flechas
-                textColor: '#333', // Color de texto general del diagrama
+                primaryColor: '#e6f3ff', 
+                primaryTextColor: '#212529', 
+                primaryBorderColor: '#004080', 
+                lineColor: '#555', 
+                textColor: '#333', 
                 fontSize: '15px'
             },
             flowchart: {
-                htmlLabels: true, // Permite usar HTML en las etiquetas de los nodos
-                curve: 'basis' // 'linear', 'basis', 'cardinal', 'step'
+                htmlLabels: true, 
+                curve: 'basis' 
             }
         });
     </script>

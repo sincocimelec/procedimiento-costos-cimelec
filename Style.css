@@ -283,6 +283,57 @@ body {
     color: #003366;
 }
 
+/* --- Estilos para la Visión General de la Etapa --- */
+.stage-overview {
+    background-color: #e9f5ff; /* Un azul muy pálido */
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    border: 1px solid #cce0ff; /* Un borde azul claro */
+}
+
+.stage-overview h3 {
+    color: #004080; /* Azul oscuro */
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+.stage-overview h3 .icon,
+.stage-overview h4 .icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+    color: #0056b3;
+}
+
+
+.stage-overview h4 {
+    color: #0056b3; /* Azul medio */
+    font-size: 1.1em;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.stage-overview .detail-list li {
+    margin-bottom: 5px;
+    padding-left: 0; /* Ajustar si se ve mal con el estilo general de .detail-list */
+    border-left: none;
+}
+
+#subprocesos-list-title { /* Para el título que precede a la lista de actividades */
+    margin-top: 30px; /* Más espacio después de la visión general */
+    font-size: 1.4em;
+    display: flex;
+    align-items: center;
+}
+
+#subprocesos-list-title .icon {
+    margin-right: 10px;
+    color: #0056b3;
+}
+
 
 /* --- Footer --- */
 .site-footer {
