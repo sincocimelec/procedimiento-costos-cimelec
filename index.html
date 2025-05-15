@@ -3,89 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía Interactiva - Presupuestos y Costos SINCO</title>
+    <title>Guía Interactiva: Procedimiento de Presupuestos y Costos en SINCO - Cimelec Ingenieros</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Favicon (opcional, pero profesional) - crea un pequeño icono para la pestaña del navegador -->
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
 </head>
 <body>
-    <header>
-        <img src="https://via.placeholder.com/150x50?text=Logo+Empresa" alt="Logo Empresa" id="logo">
-        <h1>Guía Interactiva: Procedimiento de Presupuestos y Costos en SINCO</h1>
-        <nav>
-            <a href="#flujo-proceso-visual">Flujo Principal</a>
-            <a href="#glosario-seccion">Glosario</a>
-            <a href="#responsables-seccion">Responsables</a>
+    <header class="site-header">
+        <div class="header-content">
+            <img src="logo-cimelec.png" alt="Logo Cimelec Ingenieros" id="company-logo">
+            <h1>Guía Interactiva: Procedimiento de Presupuestos y Costos en SINCO</h1>
+        </div>
+        <nav class="main-navigation">
+            <a href="#flujo-proceso-visual-container">Flujo Principal</a>
+            <a href="#glosario-container">Glosario</a>
+            <a href="#responsables-container">Responsables</a>
+            <a href="#anexos-container">Anexos y Herramientas</a>
         </nav>
     </header>
 
-    <main>
-        <section id="flujo-proceso-visual">
-            <h2>Flujo del Procedimiento</h2>
-            <p>Haz clic en una etapa del flujo para ver los detalles y pasos.</p>
-            <div class="mermaid">
-                graph TD
-                    A_INICIO[Inicio del Proyecto / Licitación] --> B_PLANIFICACION[1. Planificación y Elaboración Presupuesto];
-                    B_PLANIFICACION --> C_EJECUCION[2. Ejecución del Presupuesto];
-                    C_EJECUCION --> D_SEGUIMIENTO[3. Verificación y Seguimiento Presupuestal];
-                    D_SEGUIMIENTO --> E_CIERRE[4. Cierre y Evaluación Presupuesto];
-                    E_CIERRE --> F_FIN[Fin del Procedimiento];
+    <main class="site-main">
+        <section id="flujo-proceso-visual-container" class="content-section active-section">
+            <h2>Flujo del Procedimiento General</h2>
+            <p class="instructions">Bienvenido/a. Para comenzar, haz clic en una etapa principal del siguiente flujo para ver los detalles y pasos específicos.</p>
+            <div class="mermaid-diagram-container">
+                <div class="mermaid">
+                    graph TD
+                        A_INICIO[<strong>Inicio del Proyecto / Licitación</strong><br>Recepción de solicitud o identificación de oportunidad] --> B_PLANIFICACION[<strong>1. Planificación y Elaboración del Presupuesto</strong><br>Definición detallada y costos iniciales];
+                        B_PLANIFICACION --> C_EJECUCION[<strong>2. Ejecución del Presupuesto</strong><br>Gestión de recursos y actividades del proyecto];
+                        C_EJECUCION --> D_SEGUIMIENTO[<strong>3. Verificación y Seguimiento Presupuestal</strong><br>Monitoreo continuo y ajustes];
+                        D_SEGUIMIENTO --> E_CIERRE[<strong>4. Cierre y Evaluación del Presupuesto</strong><br>Finalización formal y análisis de resultados];
+                        E_CIERRE --> F_FIN[<strong>Fin del Procedimiento</strong><br>Documentación final y lecciones aprendidas];
 
-                    subgraph "Soporte y Control"
-                        G_SINCO_CFG[Configuración Inicial SINCO]
-                        H_AUDITORIAS[Auditorías Periódicas]
-                        I_INDICADORES[Análisis de Indicadores]
-                    end
-                    G_SINCO_CFG --> B_PLANIFICACION;
-                    H_AUDITORIAS --> D_SEGUIMIENTO;
-                    I_INDICADORES --> D_SEGUIMIENTO;
-                    I_INDICADORES --> E_CIERRE;
+                        subgraph "Elementos Transversales de Soporte y Control"
+                            direction LR
+                            G_SINCO_CFG[<strong>Configuración Inicial SINCO</strong><br>Preparación de la plataforma ERP]
+                            H_AUDITORIAS[<strong>Auditorías Periódicas</strong><br>Revisiones de cumplimiento y eficiencia]
+                            I_INDICADORES[<strong>Análisis de Indicadores</strong><br>Medición del desempeño]
+                        end
+                        G_SINCO_CFG -.-> B_PLANIFICACION;
+                        H_AUDITORIAS -.-> D_SEGUIMIENTO;
+                        I_INDICADORES -.-> D_SEGUIMIENTO;
+                        I_INDICADORES -.-> E_CIERRE;
+                </div>
             </div>
         </section>
 
-        <section id="detalles-etapa" class="hidden">
-            <h2 id="titulo-etapa-actual"></h2>
-            <div id="lista-subprocesos">
-                <!-- Los botones de subprocesos se cargarán aquí -->
+        <section id="detalles-etapa-container" class="content-section hidden-section">
+            <button id="btn-volver-al-flujo" class="nav-button back-button"><< Volver al Flujo Principal</button>
+            <h2 id="titulo-etapa-seleccionada" class="section-title"></h2>
+            <p id="descripcion-etapa-seleccionada" class="instructions"></p>
+
+            <div id="lista-subprocesos-etapa" class="subprocesses-list">
+                <!-- Los botones de subprocesos se cargarán aquí dinámicamente -->
             </div>
-            <div id="detalle-sub-proceso-contenido" class="hidden">
-                <h3 id="titulo-subproceso-actual"></h3>
-                <h4>Entradas:</h4>
-                <ul id="subproceso-entradas"></ul>
-                <h4>Pasos del Desarrollo:</h4>
-                <ol id="subproceso-pasos"></ol>
-                <h4>Intervinientes:</h4>
-                <p id="subproceso-intervinientes"></p>
-                <h4>Salidas:</h4>
-                <p id="subproceso-salidas"></p>
-                <button id="volver-a-etapa" class="nav-button">Volver a la Etapa</button>
-            </div>
-             <button id="volver-al-flujo" class="nav-button">Volver al Flujo Principal</button>
+
+            <article id="detalle-sub-proceso-especifico" class="subprocess-detail-container hidden-section">
+                <button id="btn-volver-a-etapa" class="nav-button back-button"><< Volver a la Lista de Actividades de la Etapa</button>
+                <h3 id="titulo-subproceso-seleccionado" class="subsection-title"></h3>
+                
+                <div class="detail-section">
+                    <h4><span class="icon">📥</span> Entradas Requeridas:</h4>
+                    <ul id="subproceso-entradas-lista" class="detail-list"></ul>
+                </div>
+
+                <div class="detail-section">
+                    <h4><span class="icon">🚶</span> Pasos del Desarrollo (Actividades Clave):</h4>
+                    <ol id="subproceso-pasos-lista" class="detail-list ordered"></ol>
+                </div>
+
+                <div class="detail-section">
+                    <h4><span class="icon">👥</span> Intervinientes / Responsables Principales:</h4>
+                    <p id="subproceso-intervinientes-texto" class="detail-text"></p>
+                </div>
+
+                <div class="detail-section">
+                    <h4><span class="icon">📤</span> Salidas / Resultados Esperados:</h4>
+                    <p id="subproceso-salidas-texto" class="detail-text"></p>
+                </div>
+                 <div class="detail-section" id="subproceso-tips-container" style="display:none;">
+                    <h4><span class="icon">💡</span> Puntos Clave / Consejos:</h4>
+                    <ul id="subproceso-tips-lista" class="detail-list tips"></ul>
+                </div>
+            </article>
         </section>
 
-        <section id="glosario-seccion" class="info-seccion hidden">
-            <h2>Glosario de Términos</h2>
-            <ul>
-                <li><strong>Actividad:</strong> Es un acontecimiento, tarea o unidad de trabajo que tiene un motivo específico y consume recursos.</li>
-                <li><strong>Presupuesto:</strong> Es un plan que describe los costos y los ingresos esperados de un proyecto.</li>
-                <li><strong>SINCO ERP:</strong> Producto de software que se utiliza en la industria de la construcción para gestionar proyectos y recursos.</li>
-                <!-- Añade más términos del documento -->
+        <section id="glosario-container" class="content-section info-content hidden-section">
+            <h2 class="section-title">Glosario de Términos Clave</h2>
+            <dl class="glossary-list">
+                <dt>Actividad:</dt><dd>Es un acontecimiento, tarea o unidad de trabajo que tiene un motivo específico y consume recursos. (Ref. Documento Sección 4)</dd>
+                <dt>Presupuesto:</dt><dd>Es un plan que describe los costos y los ingresos esperados de un proyecto. (Ref. Documento Sección 4)</dd>
+                <dt>SINCO ERP:</dt><dd>Producto de software (Enterprise Resource Planning) utilizado por Cimelec Ingenieros en la industria de la construcción para gestionar proyectos, recursos, finanzas y operaciones. (Ref. Documento Sección 4)</dd>
+                <dt>APU (Análisis de Precios Unitarios):</dt><dd>Desglose detallado de los componentes (materiales, mano de obra, equipo, indirectos) que conforman el costo de una unidad de una actividad constructiva.</dd>
+                <dt>EDT (Estructura de Desglose de Trabajo):</dt><dd>Descomposición jerárquica del alcance total del trabajo a realizar por el equipo del proyecto para cumplir con los objetivos del proyecto y crear los entregables requeridos. También conocido como WBS (Work Breakdown Structure).</dd>
+                <!-- Añadir más términos del documento, referenciando la sección si es posible -->
+            </dl>
+        </section>
+
+        <section id="responsables-container" class="content-section info-content hidden-section">
+            <h2 class="section-title">Roles y Responsabilidades</h2>
+            <div class="responsibility">
+                <h3>Gerencia (Ref. Sección 5.1)</h3>
+                <ul>
+                    <li>Define la estrategia financiera y los objetivos del proyecto.</li>
+                    <li>Aprueba los presupuestos y toma decisiones sobre la asignación de recursos.</li>
+                    <li>Supervisa la ejecución presupuestaria y establece medidas correctivas ante desviaciones significativas.</li>
+                </ul>
+            </div>
+            <div class="responsibility">
+                <h3>Dirección de Presupuestos y Costos (Ref. Sección 5.2)</h3>
+                <ul>
+                    <li>Lidera la elaboración, control y seguimiento del presupuesto de la empresa y sus proyectos.</li>
+                    <li>Analiza la información financiera y reporta desviaciones a la alta gerencia.</li>
+                    <li>Implementa estrategias para optimizar costos y mejorar la rentabilidad de los proyectos.</li>
+                    <li>Asegura el correcto uso del software SINCO ERP para la gestión presupuestaria.</li>
+                </ul>
+            </div>
+             <!-- Añadir más roles y responsabilidades del documento (Sección 5) -->
+        </section>
+
+        <section id="anexos-container" class="content-section info-content hidden-section">
+            <h2 class="section-title">Anexos y Herramientas Externas (Ref. Sección 8)</h2>
+            <ul class="anexos-list">
+                <li><span class="icon">🔗</span> <a href="https://www4.sincoerp.com/SincoCimelec/V3/Marco/Seleccion.aspx" target="_blank" rel="noopener noreferrer">Acceso a SINCO ERP</a> (Requiere credenciales)</li>
+                <li><span class="icon">🔗</span> <a href="https://tools.sinco.com.co/" target="_blank" rel="noopener noreferrer">SINCO Tools - Manuales y Boletines</a> (Plataforma oficial de SINCO)</li>
+                <li><span class="icon">🔗</span> <a href="https://sincosoft.document360.io/" target="_blank" rel="noopener noreferrer">SINCO Soft Documentación</a> (Base de conocimiento de SINCO)</li>
+                <li><span class="icon">🔗</span> <a href="https://docs.google.com/presentation/d/e/2PACX-1vQmXW92IQBxuV2uhZwVlrQZ33JMg0kBM6no9FS11K5RqCVNw41mox6NkwMzH3nGGg/pub?start=false&loop=false&delayms=3000&slide=id.p2" target="_blank" rel="noopener noreferrer">Instructivo Básico SINCO ADPRO – CIMELEC INGENIEROS</a></li>
+                <li><span class="icon">🔗</span> <a href="https://app.powerbi.com/view?r=eyJrljoiNDIiYzliMTUtNDVINi00Njg5LWI1NTQtODFmMjFmN2FmOWI0IiwidCI6IjU1MzZiMzE4LWQ2ZmYtNGJhMy04NDdhLTdjN2JhMjdjMzU0MCIsImMiOjR9" target="_blank" rel="noopener noreferrer">Informe DATAMART Power BI</a> (Análisis de datos, requiere acceso)</li>
             </ul>
         </section>
-
-        <section id="responsables-seccion" class="info-seccion hidden">
-            <h2>Responsables</h2>
-            <p><strong>Gerencia:</strong> Define la estrategia financiera, aprueba presupuestos...</p>
-            <p><strong>Dirección de Presupuestos y Costos:</strong> Lidera la elaboración, control y seguimiento...</p>
-            <!-- Añade más responsables del documento -->
-        </section>
-
     </main>
 
-    <footer>
-        <p>&copy; 2024 Cimelec Ingenieros S.A.S. (Simulación)</p>
+    <footer class="site-footer">
+        <p>&copy; <span id="current-year"></span> Cimelec Ingenieros S.A.S. - Guía de Procedimiento Interno. Versión Documento: 02 (02-03-2025)</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({ startOnLoad: true });</script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base', // 'default', 'forest', 'dark', 'neutral'
+            themeVariables: {
+                primaryColor: '#e6f3ff', // Color de fondo de los nodos
+                primaryTextColor: '#212529', // Color del texto en nodos
+                primaryBorderColor: '#004080', // Color del borde de nodos
+                lineColor: '#555', // Color de las flechas
+                textColor: '#333', // Color de texto general del diagrama
+                fontSize: '15px'
+            },
+            flowchart: {
+                htmlLabels: true, // Permite usar HTML en las etiquetas de los nodos
+                curve: 'basis' // 'linear', 'basis', 'cardinal', 'step'
+            }
+        });
+    </script>
     <script src="interactive.js"></script>
 </body>
 </html>

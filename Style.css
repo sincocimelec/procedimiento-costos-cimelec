@@ -1,144 +1,325 @@
-body {
-    font-family: Arial, sans-serif;
+/* --- Reset Básico y Configuración General --- */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
 }
 
-header {
-    background-color: #004080; /* Azul corporativo oscuro */
-    color: #fff;
-    padding: 1em 0;
-    text-align: center;
-    border-bottom: 5px solid #ffab00; /* Naranja corporativo */
-}
-#logo {
-    float: left;
-    margin-left: 20px;
-    height: 50px;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    background-color: #f8f9fa; /* Un gris muy claro */
+    color: #343a40; /* Gris oscuro para texto principal */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-header h1 {
+/* --- Encabezado --- */
+.site-header {
+    background-color: #003366; /* Azul corporativo Cimelec (asumido) */
+    color: #ffffff;
+    padding: 15px 30px;
+    border-bottom: 5px solid #79c142; /* Verde Cimelec (asumido del logo) */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espacio entre logo y título */
+    max-width: 1200px;
+    margin: 0 auto 15px auto; /* Centrar y dar espacio abajo */
+}
+
+#company-logo {
+    height: 60px; /* Ajusta según el tamaño de tu logo */
+    width: auto;
+}
+
+.site-header h1 {
+    font-size: 1.8em;
+    font-weight: 600;
     margin: 0;
-    font-size: 2em;
-    display: inline-block;
-    vertical-align: middle;
 }
 
-nav {
-    margin-top: 10px;
-}
-
-nav a {
-    color: #fff;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
-nav a:hover {
-    text-decoration: underline;
-}
-
-main {
-    padding: 20px;
-    max-width: 1000px;
-    margin: 20px auto;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.hidden {
-    display: none !important;
-}
-
-/* Estilos para el diagrama Mermaid */
-.mermaid {
+/* --- Navegación Principal --- */
+.main-navigation {
+    background-color: #002244; /* Un azul un poco más oscuro para la barra de nav */
+    padding: 10px 0;
     text-align: center;
-    margin-bottom: 20px;
 }
-.mermaid svg .node { /* Para todos los nodos */
+
+.main-navigation a {
+    color: #e9ecef;
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-navigation a:hover,
+.main-navigation a.active-nav-link {
+    background-color: #79c142; /* Verde al pasar el mouse o activo */
+    color: #003366; /* Texto oscuro para contraste */
+}
+
+/* --- Contenido Principal --- */
+.site-main {
+    flex-grow: 1; /* Asegura que el footer quede abajo */
+    padding: 25px;
+    max-width: 1200px; /* Ancho máximo para el contenido */
+    width: 95%;
+    margin: 20px auto; /* Centrar y dar espacio */
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+}
+
+.content-section {
+    padding: 20px;
+    border-bottom: 1px solid #dee2e6; /* Separador sutil */
+}
+.content-section:last-child {
+    border-bottom: none;
+}
+
+.section-title {
+    color: #003366; /* Azul corporativo */
+    margin-bottom: 20px;
+    font-size: 1.6em;
+    border-bottom: 2px solid #79c142; /* Línea verde debajo del título */
+    padding-bottom: 8px;
+}
+
+.subsection-title {
+    color: #004477; /* Un azul un poco más claro */
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.instructions {
+    font-style: italic;
+    color: #545b62; /* Gris medio */
+    margin-bottom: 20px;
+    background-color: #e9f5ff; /* Fondo azul muy claro para destacar */
+    padding: 10px 15px;
+    border-left: 4px solid #0056b3; /* Borde azul */
+    border-radius: 4px;
+}
+
+/* --- Diagrama Mermaid --- */
+.mermaid-diagram-container {
+    text-align: center; /* Centra el diagrama si es más pequeño que el contenedor */
+    padding: 15px;
+    background-color: #fdfdfe;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    overflow-x: auto; /* Scroll horizontal si el diagrama es muy ancho */
+}
+.mermaid svg .node.clickableNode:hover > rect,
+.mermaid svg .node.clickableNode:hover > polygon,
+.mermaid svg .node.clickableNode:hover > circle,
+.mermaid svg .node.clickableNode:hover > ellipse {
+    fill: #79c142 !important; /* Verde Cimelec al pasar el mouse */
+    stroke: #003366 !important;
     cursor: pointer;
 }
-.mermaid svg .node rect,
-.mermaid svg .node polygon,
-.mermaid svg .node circle,
-.mermaid svg .node ellipse {
-    fill: #e6f3ff; /* Azul claro para nodos */
-    stroke: #004080; /* Borde azul oscuro */
-    stroke-width: 2px;
+.mermaid svg .node > rect,
+.mermaid svg .node > polygon,
+.mermaid svg .node > circle,
+.mermaid svg .node > ellipse {
+     /* Los colores se definen en mermaid.initialize en HTML */
 }
-.mermaid svg .node.clickable:hover rect, /* Solo nodos clickables */
-.mermaid svg .node.clickable:hover polygon,
-.mermaid svg .node.clickable:hover circle,
-.mermaid svg .node.clickable:hover ellipse {
-    fill: #ffab00; /* Naranja al pasar el mouse */
-}
-.mermaid svg .edgeLabel {
-    background-color: white !important;
+.mermaid text {
+    font-family: 'Segoe UI', Tahoma, sans-serif !important;
 }
 
 
-#detalles-etapa {
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin-top: 20px;
-    background-color: #f9f9f9;
-}
-
-#detalles-etapa h2, #detalles-etapa h3 {
-    color: #004080;
-}
-
-#lista-subprocesos button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #005a8c;
+/* --- Botones y Navegación Interna --- */
+.nav-button {
+    background-color: #0056b3; /* Azul más brillante para botones */
     color: white;
     border: none;
+    padding: 10px 18px;
     border-radius: 5px;
     cursor: pointer;
-    text-align: left;
-}
-#lista-subprocesos button:hover {
-    background-color: #004080;
-}
-
-#detalle-sub-proceso-contenido {
-    margin-top: 20px;
-    padding: 15px;
-    border-left: 4px solid #ffab00;
-    background-color: #fff;
-}
-
-.nav-button {
-    padding: 10px 15px;
-    background-color: #ffab00;
-    color: #333;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 15px;
-    font-weight: bold;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 .nav-button:hover {
-    background-color: #e69500;
+    background-color: #004085; /* Azul más oscuro al pasar el mouse */
+}
+.back-button {
+    background-color: #6c757d; /* Gris para botones de "volver" */
+    margin-bottom: 20px;
+}
+.back-button:hover {
+    background-color: #5a6268;
 }
 
-.info-seccion {
-    margin-top: 30px;
-    padding: 15px;
-    background-color: #e6f3ff;
-    border-left: 4px solid #004080;
+/* --- Listas y Detalles --- */
+.subprocesses-list button {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    background-color: #e9ecef; /* Gris claro para botones de subproceso */
+    color: #212529;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1em;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+.subprocesses-list button:hover {
+    background-color: #dde2e6;
+    border-color: #adb5bd;
 }
 
-footer {
+.subprocess-detail-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fdfdfd;
+    border: 1px solid #e7e7e7;
+    border-radius: 6px;
+}
+
+.detail-section {
+    margin-bottom: 20px;
+}
+.detail-section h4 {
+    color: #003366;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+}
+.detail-section h4 .icon {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+.detail-list {
+    list-style-position: inside;
+    padding-left: 5px;
+}
+.detail-list li {
+    margin-bottom: 6px;
+    padding-left: 10px;
+    border-left: 3px solid transparent; /* Espacio para posible resaltado */
+}
+.detail-list.ordered {
+    list-style-type: decimal;
+}
+.detail-list.tips li {
+    background-color: #fff3cd; /* Amarillo claro para tips */
+    border-left-color: #ffeeba;
+    padding: 8px;
+    border-radius: 4px;
+}
+.detail-text {
+    padding-left: 15px;
+}
+
+
+/* --- Secciones de Información (Glosario, Responsables, Anexos) --- */
+.info-content {
+    background-color: #f8f9fa; /* Fondo ligeramente diferente */
+    padding: 25px;
+    border-radius: 6px;
+}
+.glossary-list dt {
+    font-weight: bold;
+    color: #003366;
+    margin-top: 10px;
+}
+.glossary-list dd {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+.responsibility {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #ced4da;
+}
+.responsibility:last-child {
+    border-bottom: none;
+}
+.responsibility h3 {
+    color: #004477;
+    margin-bottom: 8px;
+}
+.responsibility ul {
+    list-style-type: disc;
+    margin-left: 25px;
+}
+.anexos-list {
+    list-style: none;
+    padding-left: 0;
+}
+.anexos-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.anexos-list li .icon {
+    margin-right: 10px;
+    color: #0056b3; /* Icono azul */
+}
+.anexos-list a {
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: 500;
+}
+.anexos-list a:hover {
+    text-decoration: underline;
+    color: #003366;
+}
+
+
+/* --- Footer --- */
+.site-footer {
+    background-color: #343a40; /* Gris oscuro para footer */
+    color: #adb5bd; /* Texto gris claro */
     text-align: center;
     padding: 20px;
-    background-color: #333;
-    color: #fff;
-    margin-top: 30px;
+    font-size: 0.9em;
+}
+
+/* --- Clases de Utilidad --- */
+.hidden-section {
+    display: none !important;
+}
+.active-section {
+    display: block !important;
+}
+
+
+/* --- Media Queries para Responsividad (Ejemplo Básico) --- */
+@media (max-width: 768px) {
+    .site-header h1 {
+        font-size: 1.4em;
+    }
+    #company-logo {
+        height: 45px;
+    }
+    .main-navigation a {
+        margin: 0 10px;
+        font-size: 0.9em;
+    }
+    .site-main {
+        width: 100%;
+        padding: 15px;
+        margin-top: 10px;
+    }
+    .section-title {
+        font-size: 1.4em;
+    }
 }
